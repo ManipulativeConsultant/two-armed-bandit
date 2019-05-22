@@ -22,15 +22,17 @@ methods like Q-learning show a unique behavior.
  
  The parameters from the Q table of one training agent along the training process. The agent enters the boring areas trap atepisode40, andexitsatepisode320, whenthe complementary error occurs. Low variance in the left arm will delay this complementary error.
  <br/>
- ![](images/fig5.png)
+ ![](images/Fig5.png)
  
  The inﬂuence of σl, σr on the success frequency. Rightarm: different σr for the right arm. Left arm: different σl for the right arm. Severe variance differences cause the "boring areas trap". Minor differences enable the "Manipulative Consultant" problem
+ <br/>
  <br/>
  ![](images/fig6.jpg)
  
  The AirSim realistic driving simulator, with the suburban "Neighborhood" environment. A drive of the our best trained model can be found at https://youtu.be/2Gms-1kYhG4
-<br/>
+ 
  ![](images/fig7.png)
+ 
  Training DQN agent for autonomous driving in the AirSim simulator. Driving time - best in last 20 trials, smoothed by a kernel of length 40. Without ASRN: DQN algorithm from [11]. WithASRN: DQN algorithm from [11], with reward noising using the ASRN scheme.
  <br/>
    
