@@ -87,9 +87,9 @@ When we check it on the Broken-Armed-Bandit above, we see it helps them get out 
    
  Now, this is nice on bandits, but what about some real stuff? Well, driving is a very suitable example. Just as with the pizza above, there is a strategy which will give you low reward with low variance - like "go left till you crash". On the other hand, there is the strategy of actually driving, which will sometimes give you high reward when you'll reach the target, but with high variance - there are many dangers waiting along the road. We trained using AirSim Neighborhood driving simulation. It is great realistic simulation:
    
-[ ![](images/fig6.jpg)  ](https://youtu.be/aoft3T_77sQ)
+[ ![](images/fig6.jpg)  ](https://youtu.be/2Gms-1kYhG4)
  
- **The AirSim realistic driving simulator, with the suburban "Neighborhood" environment. A drive of the our best trained model can be found at https://youtu.be/aoft3T_77sQ**  
+ **The AirSim realistic driving simulator, with the suburban "Neighborhood" environment. A drive of the our best trained model can be found at https://youtu.be/2Gms-1kYhG4**  
    
  and they already implemented a DQN agent. So all is left to do is to plug in the ASRN and look at the mean driving time (green) compared to without ASRN:   
  ![](images/fig7.png)
@@ -97,7 +97,8 @@ When we check it on the Broken-Armed-Bandit above, we see it helps them get out 
  **Training DQN agent for autonomous driving in the AirSim simulator. Driving time - best in last 20 trials, smoothed by a kernel of length 40. Without ASRN: DQN algorithm from [11]. WithASRN: DQN algorithm from [11], with reward noising using the ASRN scheme.
  <br/>**
  
- Now, obviously reward noising is not an complete solution. A lot of sophisticated exploration needs to be done in parallel, together with other tricks. The Manipulative Consultant and Boring Areas Trap problems are questions which are better than the current answers. But it is important to bare in mind those problems when we come to plan our RL strategy. It's crucial to think: are there variance differences? How are they affecting the chosen algorithm? And maybe this will lead to a more stable RL.
+ To sum up: we saw the problems variance differences cause to RL. Some are global like the Boring Areas Trap, and some are special to DRL like the manipulative consultant. We also saw that reward noising can help a little. We explored Q learning and DQN but it is likely that it holds for Actor Critic and other algorithms too.  
+ Obviously reward noising is not a complete solution.  A lot of sophisticated exploration needs to be done in parallel, together with other RL tricks like clipping and such. The Manipulative Consultant and Boring Areas Trap problems are questions which are better than the current available answers. But it is important to bare in mind those problems when we come to plan our RL strategy. It's crucial to think: are there variance differences in this environment? How are they affecting the chosen algorithm? And maybe this will lead to a more stable RL.
    
  You can see this experiment in the ["DistributedRL" repository](https://github.com/ManipulativeConsultant/AutonomousDrivingCookbook) 
    
