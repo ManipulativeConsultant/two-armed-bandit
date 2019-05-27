@@ -2,12 +2,13 @@
 # Two-Armed-Bandit
 
 Imagine you go to the bank and ask for an investment consultant.  
-They give you one, and you first ask according to what he charges.  
+They give you one, and you first ask how he charges.  
 Is it according to the profit he'll make you?  
-"No" he says "I'm a special consultant: The more accurate I am in my return predictions, you'll pay me more.  But I will be tested only on the investments you chose to take."  
-This smells a bit fishy. You never heard of such a consultant. You start sniffing around for other people who are using this consultant.    Turn out he recommended them all only government bonds with low return and low variability. 
-He even told them this has the highest mean return! This is just wrong, you think. Everybody knows stocks have higher mean return!
-However, they all believed him, bought the bonds, and of course he was pretty accurate about the return, with very little error. So they had to pay him his maximum fee.   
+"No" he says "The more accurate I am in my return predictions, you'll pay me more.  but I will be tested only on the investments you chose to take."  
+This smells a bit fishy, and you start sniffing around for other people who are using this consultant.  
+Turn out he recommended them all only government bonds with low return and low variability. 
+He even told them this has the highest mean return!  
+They all believed him, bought the bonds, and of course he was pretty accurate about the return, with very little error. So they had to pay him his maximum fee.   
 What do you think about this guy? I think he is a kind of a "Manipulative Consultant".  
    
 **And I think everyone in Reinforcement Learning are using just this guy.**   
@@ -17,7 +18,7 @@ Currently, in Reinforcement Learning there are two leading families of algorithm
 Now, everybody complains that [RL doesn't work yet](https://www.alexirpan.com/2018/02/14/rl-hard.html) and that [Deep is hardly helping](https://himanshusahni.github.io/2018/02/23/reinforcement-learning-never-worked.html).
 And with just. Training a RL algorithm is brittle: It's highly depends on the initialization of the network and the parameters, so you repeat the same experiment again and again. You see your algorithm improving and then retreats. You're puzzled because it does so while the loss function continues improving. You can choose the best temporary network along the way and call it a day, but there is nothing you can do to further improve the result.  
 
-So the claim here is that you just chose the wrong consultant. Or at least you chose **the wrong way to pay him**. It's choosing low-reward actions, and tells you that other options have an even lower mean reward, so he'll be more accurate because they are so low-variance and predictable. And you'll never catch its manipulation cause you keep testing it on what it chose.  
+So what we claim here is that you just chose the wrong consultant. Or at least chose the wrong way to pay him. It's choosing low-reward actions, and tells you they are high-reward ones, so he'll be more accurate because they are so low-variance and predictable. And you'll never catch its manipulation cause you keep testing it on what it chose.  
 
 First, let's prove this loss-gaps exists. We take a simple game: two slots machines (or "Multi-Armed Bandit" as they're called in RL), the right one gives 1 reward but with high variance, and the left one is broken, so it gives 0 reward with 0 variance. We call it the Broken-Armed-Bandit.  
 Now, you have to decide which one to use each game episode. Seems easy? Not for Q-learning. 
@@ -95,12 +96,12 @@ When we check it on the Broken-Armed-Bandit above, we see it helps them get out 
  
  **Training DQN agent for autonomous driving in the AirSim simulator. Driving time - best in last 20 trials, smoothed by a kernel of length 40. Without ASRN: DQN algorithm from [11]. WithASRN: DQN algorithm from [11], with reward noising using the ASRN scheme.
  <br/>**
- 
- To sum up: we saw the problems variance differences cause to RL. Some are global like the Boring Areas Trap, and some are special to DRL like the manipulative consultant. We also saw that reward noising can help a little. We explored Q learning and DQN but it is likely that it holds for Actor Critic and other algorithms too.  
- Obviously reward noising is not a complete solution.  A lot of sophisticated exploration needs to be done in parallel, together with other RL tricks like clipping and such. The Manipulative Consultant and Boring Areas Trap problems are questions which are better than the current available answers. But it is important to bare in mind those problems when we come to plan our RL strategy. It's crucial to think: are there variance differences in this environment? How are they affecting the chosen algorithm? And maybe this will lead to a more stable RL.
-   
+    
  You can see this experiment in the ["DistributedRL" repository](https://github.com/ManipulativeConsultant/AutonomousDrivingCookbook) 
    
+ To sum up: we saw the problems variance differences cause to RL. Some are global like the Boring Areas Trap, and some are special to DRL like the manipulative consultant. We also saw that reward noising can help a little. We explored Q learning and DQN but it is likely that it holds for Actor Critic and other algorithms too.  
+ Obviously reward noising is not a complete solution.  A lot of sophisticated exploration needs to be done in parallel, together with other RL tricks like clipping and such. The Manipulative Consultant and Boring Areas Trap problems are questions which are better than the current available answers. But it is important to bare in mind those problems when we come to plan our RL strategy. It's crucial to think: are there variance differences in this environment? How are they affecting the chosen algorithm? And maybe this will lead to a more stable RL.
+
 ### Installation and usage
 
 The following command should train an agent on Two-Armed-Bandit with default experiment parameters.
