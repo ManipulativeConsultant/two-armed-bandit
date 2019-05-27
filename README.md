@@ -87,9 +87,9 @@ When we check it on the Broken-Armed-Bandit above, we see it helps them get out 
    
  Now, this is nice on bandits, but what about some real stuff? Well, driving is a very suitable example. Just as with the pizza above, there is a strategy which will give you low reward with low variance - like "go left till you crash". On the other hand, there is the strategy of actually driving, which will sometimes give you high reward when you'll reach the target, but with high variance - there are many dangers waiting along the road. We trained using AirSim Neighborhood driving simulation. It is great realistic simulation:
    
-[ ![](images/fig6.jpg)  ](https://youtu.be/2Gms-1kYhG4)
+[ ![](images/fig6.jpg)  ]https://youtu.be/aoft3T_77sQ)
  
- **The AirSim realistic driving simulator, with the suburban "Neighborhood" environment. A drive of the our best trained model can be found at https://youtu.be/2Gms-1kYhG4**  
+ **The AirSim realistic driving simulator, with the suburban "Neighborhood" environment. A drive of the our best trained model can be found at https://youtu.be/aoft3T_77sQ**  
    
  and they already implemented a DQN agent. So all is left to do is to plug in the ASRN and look at the mean driving time (green) compared to without ASRN:   
  ![](images/fig7.png)
