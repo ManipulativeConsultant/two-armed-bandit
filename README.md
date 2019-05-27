@@ -68,8 +68,9 @@ At episode 320, the complementary error occurs. Q_left becomes lower than the fa
 What variance differences cause this problem? Here we can see a map, for different values of σ_l and σ_r:
  <br/>
  ![](images/Fig5.png)
+   
  **The influence of σ_l, σ_r on the success frequency. Right arm: different σ_r for the right arm. Left arm: different σ_l for the right arm. Severe variance differences cause the "boring areas trap". Minor differences enable the "Manipulative Consultant" problem** 
- 
+  
 At the bottom-left are there is a big region where all agents fail, due to large variance differences. There is another area at the center where agents are jumping on and off the trap, due to lower variance differences. Only when the variance differences are low Q-learning is working. A lower learning rate will move the dark areas further to the right, but will lower the, well, learning rate, so training will be very slow. 
  
 The proposed solution comes from a [weird experiment in human cognition.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2678746/) They did an experiment called "Agriculture on march" which is the same as the two-armed-bandit, but when each action moves both machines means. Weird indeed. They found that adding little noise to the reward paradoxically helps people *"rule out simple hypotheses and encourage sampling of alternatives"* and actually help them gain more rewards!  
