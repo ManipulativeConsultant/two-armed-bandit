@@ -1,6 +1,14 @@
-Reinforcement Learning is full of Manipulative Consultants
+# Reinforcement Learning is full of Manipulative Consultants
 
-When there are variance differences in environments used to train reinforcement learning algorithms, weird things happen. Value estimation networks prefer low variance areas regardless of the rewards, what makes them a Manipulative Consultants. Q-learning algorithms get stuck in “Boring Areas Trap” and can’t get out due to the low variance. Reward noising can help but it must be done carefully. 
+### Installation and usage
+
+The following command should train an agent on Two-Armed-Bandit with default experiment parameters.
+
+```
+python run.py
+```
+
+#### When there are variance differences in environments used to train reinforcement learning algorithms, weird things happen. Value estimation networks prefer low variance areas regardless of the rewards, what makes them a Manipulative Consultants. Q-learning algorithms get stuck in “Boring Areas Trap” and can’t get out due to the low variance. Reward noising can help but it must be done carefully. 
 
 Manipulative Consultant
 
@@ -100,3 +108,10 @@ This is definitely better, isn’t it? You can see the changed code [here] https
 
 To sum it all up: we saw the problems that variance differences cause to RL. Some are global, like the Boring Areas Trap, and some are specific to Deep Reinforcement Learning (DRL), like the Manipulative Consultant. We also saw that reward-noising can help a little, especially if the noising is symmetric and adaptive to the actual action variance. We explored Q-learning and DQN, but it is likely that it holds for Actor Critic and other algorithms too. 
 Obviously, reward-noising is not a complete solution. A lot of sophisticated exploration needs to be done in parallel, together with other RL tricks like clipping and such. The Manipulative Consultant and Boring Areas Trap problems raise at least as many questions as they answer. But it is important to bear in mind those problems when we sit down to plan our RL strategy. It’s crucial to think: are there any variance differences in this environment? How are they affecting the chosen algorithm? And maybe this will lead to a more stable RL.
+
+## Authors
+Currently anonymous, since the paper is in peer-review.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
