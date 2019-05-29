@@ -1,4 +1,5 @@
 # Reinforcement Learning is full of Manipulative Consultants
+#### When there are variance differences in environments used to train reinforcement learning algorithms, weird things happen. Value estimation networks prefer low variance areas regardless of the rewards, what makes them a "Manipulative Consultants". Q-learning algorithms get stuck in “Boring Areas Trap” and can’t get out due to the low variance. Reward noising can help but it must be done carefully. This code implements experiments for those problems.
 
 ### Installation and usage
 
@@ -8,9 +9,9 @@ The following command should train an agent on Two-Armed-Bandit with default exp
 python run.py
 ```
 
-#### When there are variance differences in environments used to train reinforcement learning algorithms, weird things happen. Value estimation networks prefer low variance areas regardless of the rewards, what makes them a Manipulative Consultants. Q-learning algorithms get stuck in “Boring Areas Trap” and can’t get out due to the low variance. Reward noising can help but it must be done carefully. 
 
-Manipulative Consultant
+
+### Manipulative Consultant
 
 Imagine you go to the bank and ask for an investment consultant. 
 They give you one, and you first ask how he charges. 
@@ -20,15 +21,15 @@ This smells a bit fishy, and you start sniffing around for other people who are 
 Turns out he recommended them all only government bonds with low return and low variability. 
 He even told them this has the highest mean return! 
 They all believed him, bought the bonds, and of course he was pretty accurate about the return, with very small errors. So they had to pay him his maximum fee.
-What do you think about this guy? I think he is a kind of “Manipulative Consultant”. 
+What do you think about this guy? I think he is a kind of **“Manipulative Consultant”**. 
 
-And everyone in Reinforcement Learning is using just this guy.
+**And everyone in Reinforcement Learning is using just this guy.**
 
 Currently, in Reinforcement Learning (RL) there are two leading families of algorithms: Deep Q Networks (DQN) and Actor Critic. Both are using a consultant function or a ‘value estimation’ functions — a Deep Neural Network (DNN) which estimates the value of a state and/or action. In DQN it’s the Q-network, and in Actor Critic it’s the Critic network. This is basically a good decision: value-estimation functions can learn off-policy, meaning they can learn from watching someone else play, even if he’s not so good. This enables them to learn from the experience collected using past policies which have already been abandoned.
 
 However, there’s a catch: we “pay” this consultant according to his accuracy: the loss function which is used to optimize the network is based on the network’s prediction error. And the network is tested on the actions it chose: the policy will do what the network advised as best, and this will be the only future source of experience.
 
-[RL doesn't work yet](https://www.alexirpan.com/2018/02/14/rl-hard.html) and that [Deep is hardly helping](https://himanshusahni.github.io/2018/02/23/reinforcement-learning-never-worked.html). And rightly so. Training a RL algorithm is brittle: it depends strongly on the initialization of the network and of the parameters, so you have to repeat the same experiment again and again, each time initialized differently. You see your algorithm improving and then regressing. You’re puzzled, because it does so while the loss function continues showing improved performance. You can choose the best temporary network along the way and call it a day, but there is nothing you can do through RL to further improve the results.
+Now, everybody complains that [RL doesn't work yet](https://www.alexirpan.com/2018/02/14/rl-hard.html) and that [Deep is hardly helping](https://himanshusahni.github.io/2018/02/23/reinforcement-learning-never-worked.html). And rightly so. Training a RL algorithm is brittle: it depends strongly on the initialization of the network and of the parameters, so you have to repeat the same experiment again and again, each time initialized differently. You see your algorithm improving and then regressing. You’re puzzled, because it does so while the loss function continues showing improved performance. You can choose the best temporary network along the way and call it a day, but there is nothing you can do through RL to further improve the results.
 
 So what we claim here is, that you simply chose the wrong consultant. Or at least — chose the wrong way to pay him. He’s choosing low-rewards actions, and tells you all other options are worse. He will be more accurate because the rewards on the actions he recommends are so predictable. And you’ll never catch him manipulating you, because you keep testing him on what he chose.
 
@@ -43,7 +44,7 @@ Now, every good RL algorithm has its exploration scheme. Here we used the epsilo
 What we saw is a gap in the loss, where the boring decisions are winning. When we optimize a deep-network by minimizing this loss, sometimes it will favor the boring decisions to minimize its loss. But what if we don’t use DNN at all? What if we use good old Q-learning, with a Q- table? 
 There is still a problem, and it is called the “Boring Areas Trap”.
 
-Boring Areas Trap
+### Boring Areas Trap
 
 Imagine you have a bicycle, and someone is giving you a free pizza a mile away from your home. You have two options: you can give up on riding there, and you get a mean of 0 pizza with 0 variance. On the other hand you can decide to ride there, and then you get a mean of 1 pizza, but with high variance: with a very small probability, you may have an accident and you’ll spend six months in a cast, in agonizing pains, losing money for your ruined bicycle, and with no pizza.
 
@@ -76,7 +77,7 @@ What variance differences cause this problem? Here we can see a grades-map, for 
 
 At the bottom-right there is a dark region where all agents fail, due to large variance differences. There is another area at the center where agents are flitting in and out of the trap, due to lower variance differences. Only when the variance differences are low, Q-learning is working. A lower learning rate will move the dark areas further to the right, but will, well, lower the learning rate, so training will be very slow.
 
-Reward noising
+### Reward noising
 
 The proposed solution comes from an experiment in human cognition. Some scientists conducted an experiment called “Agriculture on march” which is the same as the two-armed-bandit, but where each action moves both machines’ means. They found that adding a little noise to the reward paradoxically helps people ”rule out simple hypotheses” and encourages “sampling of alternatives”, and actually helps them gain more rewards! 
 We can do the same here. We can add a symmetric noise to the reward, so it will not influence the mean reward. 
@@ -92,7 +93,7 @@ When we check the ASRN on the Broken-Armed-Bandit above, we see that it helps th
 
 Some of them reached the Boring Areas Trap, but managed to escape using the noise we added.
 
-Driving with noise
+### Driving with noise
 
 Now, all this is nice to use on bandits, but what about using it on some real stuff?
 
@@ -113,5 +114,4 @@ Obviously, reward-noising is not a complete solution. A lot of sophisticated exp
 Currently anonymous, since the paper is in peer-review.
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
